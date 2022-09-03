@@ -111,6 +111,7 @@ public class Calculator {
         }
         if(newMode == MonoOperatorModes.inverseCos) {
         	return Math.toDegrees(Math.acos(num));
+        }
         if (newMode == MonoOperatorModes.inverseTan) {
         	return Math.toDegrees(Math.atan(num));
         }
