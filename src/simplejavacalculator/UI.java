@@ -51,7 +51,7 @@ public class UI implements ActionListener {
    
    private final JTextArea text;
    private final JButton but[], butAdd, butMinus, butMultiply, butDivide,
-      butEqual, butCancel, butSquareRoot, butSquare, butOneDividedBy,
+      butEqual, butCancel, butSquareRoot, butSquare, butCube, butOneDividedBy,
       butCos, butSin, butTan, butInverseCos, butInverseTan, butxpowerofy, butlog, butrate, butabs, butBinary;
    private final Calculator calc;
    
@@ -101,8 +101,11 @@ public class UI implements ActionListener {
       butCos = new JButton("Cos");      
       butSin = new JButton("Sin");      
       butTan = new JButton("Tan");
+
       butInverseCos = new JButton("Cos^-1");
       butInverseTan = new JButton("Tan^-1");
+      butCube = new JButton("x*x*x");
+      
       butxpowerofy = new JButton("x^y");      
       butlog = new JButton("log10(x)");      
       butrate = new JButton("x%");      
@@ -138,8 +141,11 @@ public class UI implements ActionListener {
       butCos.setFont(font);
       butSin.setFont(font);
       butTan.setFont(font);
+
       butInverseCos.setFont(font);
       butInverseTan.setFont(font);
+      butCube.setFont(font);
+
       butxpowerofy.setFont(font);
       butlog.setFont(font);
       butrate.setFont(font);
@@ -181,6 +187,7 @@ public class UI implements ActionListener {
       panel.add(panelSub5);
       
       panelSub6.add(butSquare);
+      panelSub6.add(butCube);
       panelSub6.add(butSquareRoot);
       panelSub6.add(butOneDividedBy);
       panelSub6.add(butxpowerofy);
@@ -189,6 +196,7 @@ public class UI implements ActionListener {
       panelSub7.add(butCos);
       panelSub7.add(butSin);
       panelSub7.add(butTan);
+
       panelSub7.add(butInverseCos);
       panelSub7.add(butInverseTan);
       panel.add(panelSub7);
@@ -212,8 +220,11 @@ public class UI implements ActionListener {
       butCos.addActionListener(this);
       butSin.addActionListener(this);
       butTan.addActionListener(this);
+
       butInverseCos.addActionListener(this);
       butInverseTan.addActionListener(this);
+      butCube.addActionListener(this);
+
       butxpowerofy.addActionListener(this);
       butlog.addActionListener(this);
       butrate.addActionListener(this);
@@ -272,6 +283,11 @@ public class UI implements ActionListener {
          if (source == butSquare) {
             writer(calc.calculateMono(Calculator.MonoOperatorModes.square, reader()));
          }
+         
+         if (source == butCube) {
+             writer(calc.calculateMono(Calculator.MonoOperatorModes.cube, reader()));
+          }
+
 
          if (source == butSquareRoot)
             writer(calc.calculateMono(Calculator.MonoOperatorModes.squareRoot, reader()));
@@ -290,9 +306,6 @@ public class UI implements ActionListener {
          
          if (source == butInverseCos)
              writer(calc.calculateMono(Calculator.MonoOperatorModes.inverseCos, reader()));
-
-         if (source == butInverseTan)
-             writer(calc.calculateMono(Calculator.MonoOperatorModes.inverseTan, reader()));
 
          if (source == butlog)
             writer(calc.calculateMono(Calculator.MonoOperatorModes.log, reader()));
