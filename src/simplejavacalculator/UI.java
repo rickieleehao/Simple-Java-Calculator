@@ -100,7 +100,8 @@ public class UI implements ActionListener {
       butOneDividedBy = new JButton("1/x");      
       butCos = new JButton("Cos");      
       butSin = new JButton("Sin");      
-      butTan = new JButton("Tan");      
+      butTan = new JButton("Tan");
+      butInverseTan = new JButton("Tan^-1");
       butxpowerofy = new JButton("x^y");      
       butlog = new JButton("log10(x)");      
       butrate = new JButton("x%");      
@@ -137,6 +138,7 @@ public class UI implements ActionListener {
       butCos.setFont(font);
       butSin.setFont(font);
       butTan.setFont(font);
+      butInverseTan.setFont(font);
       butxpowerofy.setFont(font);
       butlog.setFont(font);
       butrate.setFont(font);
@@ -187,6 +189,7 @@ public class UI implements ActionListener {
       panelSub7.add(butCos);
       panelSub7.add(butSin);
       panelSub7.add(butTan);
+      panelSub7.add(butInverseTan);
       panel.add(panelSub7);
       
       panelSub8.add(butlog);
@@ -209,6 +212,7 @@ public class UI implements ActionListener {
       butCos.addActionListener(this);
       butSin.addActionListener(this);
       butTan.addActionListener(this);
+      butInverseTan.addActionListener(this);
       butxpowerofy.addActionListener(this);
       butlog.addActionListener(this);
       butrate.addActionListener(this);
@@ -287,6 +291,9 @@ public class UI implements ActionListener {
 
          if (source == butTan)
             writer(calc.calculateMono(Calculator.MonoOperatorModes.tan, reader()));
+
+         if (source == butInverseTan)
+             writer(calc.calculateMono(Calculator.MonoOperatorModes.inverseTan, reader()));
 
          if (source == butlog)
             writer(calc.calculateMono(Calculator.MonoOperatorModes.log, reader()));
