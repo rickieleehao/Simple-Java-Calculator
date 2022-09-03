@@ -23,7 +23,7 @@ import static java.lang.Math.pow;
     }
 
 <span class="fc" id="L25">    public enum MonoOperatorModes {</span>
-<span class="fc" id="L26">        square, squareRoot, oneDividedBy, cos, sin, tan , inverseTan, log , rate, abs</span>
+<span class="fc" id="L26">        square, squareRoot, oneDividedBy, cos, sin, tan, inverseCos, inverseTan, log , rate, abs</span>
     }
 
     private Double num1, num2;
@@ -109,21 +109,24 @@ import static java.lang.Math.pow;
 
 <span class="fc" id="L110">            return Math.tan(Math.toRadians(num));</span>
         }
-<span class="fc bfc" id="L112" title="All 2 branches covered.">        if (newMode == MonoOperatorModes.inverseTan) {</span>
-<span class="fc" id="L113">        	return Math.toDegrees(Math.atan(num));</span>
+<span class="fc bfc" id="L112" title="All 2 branches covered.">        if(newMode == MonoOperatorModes.inverseCos) {</span>
+<span class="fc" id="L113">        	return Math.toDegrees(Math.acos(num));</span>
         }
-<span class="fc bfc" id="L115" title="All 2 branches covered.">        if (newMode == MonoOperatorModes.log) {</span>
-<span class="fc" id="L116">            return log10(num);</span>
+<span class="fc bfc" id="L115" title="All 2 branches covered.">        if (newMode == MonoOperatorModes.inverseTan) {</span>
+<span class="fc" id="L116">        	return Math.toDegrees(Math.atan(num));</span>
         }
-<span class="fc bfc" id="L118" title="All 2 branches covered.">        if (newMode == MonoOperatorModes.rate) {</span>
-<span class="fc" id="L119">           return num / 100;</span>
+<span class="fc bfc" id="L118" title="All 2 branches covered.">        if (newMode == MonoOperatorModes.log) {</span>
+<span class="fc" id="L119">            return log10(num);</span>
         }
-<span class="pc bpc" id="L121" title="1 of 2 branches missed.">        if (newMode == MonoOperatorModes.abs){</span>
-<span class="fc" id="L122">            return Math.abs(num);</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">        if (newMode == MonoOperatorModes.rate) {</span>
+<span class="fc" id="L122">           return num / 100;</span>
+        }
+<span class="pc bpc" id="L124" title="1 of 2 branches missed.">        if (newMode == MonoOperatorModes.abs){</span>
+<span class="fc" id="L125">            return Math.abs(num);</span>
         }
 
         // never reach
-<span class="nc" id="L126">        throw new Error();</span>
+<span class="nc" id="L129">        throw new Error();</span>
     }
 
 }
