@@ -90,6 +90,9 @@ public class Calculator {
         if (newMode == MonoOperatorModes.squareRoot) {
             return Math.sqrt(num);
         }
+        if (newMode == MonoOperatorModes.cube) {
+            return num * num * num;
+        }
         if (newMode == MonoOperatorModes.oneDividedBy) {
             return 1 / num;
         }
