@@ -18,7 +18,6 @@
 
 package simplejavacalculator;
 
-import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -52,7 +51,7 @@ public class UI implements ActionListener {
    private final JTextArea text;
    private final JButton but[], butAdd, butMinus, butMultiply, butDivide,
       butEqual, butCancel, butSquareRoot, butSquare, butOneDividedBy,
-      butCos, butSin, butTan, butxpowerofy, butlog, butrate, butabs, butBinary, butDarkMode;
+      butCos, butSin, butTan, butxpowerofy, butlog, butrate, butabs, butBinary;
    private final Calculator calc;
    
    private final String[] buttonValue = {"0", "1", "2", "3", "4", "5", "6",
@@ -106,8 +105,7 @@ public class UI implements ActionListener {
       butrate = new JButton("x%");      
       butabs = new JButton("abs(x)");      
       butCancel = new JButton("C");      
-      butBinary = new JButton("Bin");
-      butDarkMode = new JButton("Dark");
+      butBinary = new JButton("Bin");      
       
       calc = new Calculator();
       
@@ -143,7 +141,6 @@ public class UI implements ActionListener {
       butabs.setFont(font);
       butCancel.setFont(font);
       butBinary.setFont(font); 
-      butDarkMode.setFont(font); 
       
       panel.add(Box.createHorizontalStrut(100));
       panelSub1.add(text);
@@ -187,7 +184,6 @@ public class UI implements ActionListener {
       panelSub7.add(butCos);
       panelSub7.add(butSin);
       panelSub7.add(butTan);
-      panelSub7.add(butDarkMode);
       panel.add(panelSub7);
       
       panelSub8.add(butlog);
@@ -214,7 +210,6 @@ public class UI implements ActionListener {
       butrate.addActionListener(this);
       butabs.addActionListener(this);
       butBinary.addActionListener(this);
-      butDarkMode.addActionListener(this);
       
       butEqual.addActionListener(this);
       butCancel.addActionListener(this);
@@ -302,26 +297,10 @@ public class UI implements ActionListener {
 
          if (source == butBinary)
             parsetoBinary();
-         
-         if (source == butDarkMode)
-             changeBGColor();
       }
 
       text.selectAll();
    }
-   
-   private void changeBGColor() {
-	   Color c1 = new Color(100, 100, 100);  
-	   panel.setBackground(c1);
-	   panelSub2.setBackground(c1);
-	   panelSub3.setBackground(c1);
-	   panelSub4.setBackground(c1);
-	   panelSub5.setBackground(c1);
-	   panelSub6.setBackground(c1);
-	   panelSub7.setBackground(c1);
-	   panelSub8.setBackground(c1);
-   }
-   
    
    private void parsetoBinary() {
       try {
