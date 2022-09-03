@@ -18,7 +18,6 @@
 
 package simplejavacalculator;
 
-import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -51,11 +50,11 @@ public class UI implements ActionListener {
    
    private final JTextArea text;
    private final JButton but[], butAdd, butMinus, butMultiply, butDivide,
-      butEqual, butCancel, butSquareRoot, butSquare, butOneDividedBy,
-      butCos, butSin, butTan, butxpowerofy, butlog, butrate, butabs, butBinary, butDarkMode;
+      butEqual, butCancel, butSquareRoot, butSquare, butCube, butOneDividedBy,
+      butCos, butSin, butTan, butxpowerofy, butlog, butrate, butabs, butBinary;
    private final Calculator calc;
    
-<span class="nc" id="L58">   private final String[] buttonValue = {&quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;,</span>
+<span class="nc" id="L57">   private final String[] buttonValue = {&quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;,</span>
       &quot;7&quot;, &quot;8&quot;, &quot;9&quot;};
    
    private final Font font;
@@ -63,40 +62,41 @@ public class UI implements ActionListener {
    private ImageIcon image;
    private BufferedImageCustom imageReturn;
    
-<span class="nc" id="L66">   public UI() throws IOException {</span>
-<span class="nc" id="L67">      frame = new JFrame(&quot;Calculator PH&quot;);</span>
+<span class="nc" id="L65">   public UI() throws IOException {</span>
+<span class="nc" id="L66">      frame = new JFrame(&quot;Calculator PH&quot;);</span>
       
-<span class="nc" id="L69">      imageReturn = new BufferedImageCustom();</span>
-<span class="nc" id="L70">      image = new ImageIcon(imageReturn.imageReturn());      </span>
+<span class="nc" id="L68">      imageReturn = new BufferedImageCustom();</span>
+<span class="nc" id="L69">      image = new ImageIcon(imageReturn.imageReturn());      </span>
       
-<span class="nc" id="L72">      panel = new JPanel();</span>
-<span class="nc" id="L73">      panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));</span>
-<span class="nc" id="L74">      panelSub1 = new JPanel(new FlowLayout());</span>
-<span class="nc" id="L75">      panelSub2 = new JPanel(new FlowLayout());</span>
-<span class="nc" id="L76">      panelSub3 = new JPanel(new FlowLayout());</span>
-<span class="nc" id="L77">      panelSub4 = new JPanel(new FlowLayout());</span>
-<span class="nc" id="L78">      panelSub5 = new JPanel(new FlowLayout());</span>
-<span class="nc" id="L79">      panelSub6 = new JPanel(new FlowLayout());</span>
-<span class="nc" id="L80">      panelSub7 = new JPanel(new FlowLayout());</span>
-<span class="nc" id="L81">      panelSub8 = new JPanel(new FlowLayout());</span>
+<span class="nc" id="L71">      panel = new JPanel();</span>
+<span class="nc" id="L72">      panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));</span>
+<span class="nc" id="L73">      panelSub1 = new JPanel(new FlowLayout());</span>
+<span class="nc" id="L74">      panelSub2 = new JPanel(new FlowLayout());</span>
+<span class="nc" id="L75">      panelSub3 = new JPanel(new FlowLayout());</span>
+<span class="nc" id="L76">      panelSub4 = new JPanel(new FlowLayout());</span>
+<span class="nc" id="L77">      panelSub5 = new JPanel(new FlowLayout());</span>
+<span class="nc" id="L78">      panelSub6 = new JPanel(new FlowLayout());</span>
+<span class="nc" id="L79">      panelSub7 = new JPanel(new FlowLayout());</span>
+<span class="nc" id="L80">      panelSub8 = new JPanel(new FlowLayout());</span>
       
-<span class="nc" id="L83">      font = new Font(&quot;Consolas&quot;,Font.PLAIN, 18);</span>
+<span class="nc" id="L82">      font = new Font(&quot;Consolas&quot;,Font.PLAIN, 18);</span>
       
-<span class="nc" id="L85">      text = new JTextArea(1, 30);</span>
+<span class="nc" id="L84">      text = new JTextArea(1, 30);</span>
       
-<span class="nc" id="L87">      textFont = new Font(&quot;Consolas&quot;,Font.BOLD, 24);</span>
+<span class="nc" id="L86">      textFont = new Font(&quot;Consolas&quot;,Font.BOLD, 24);</span>
       
-<span class="nc" id="L89">      but = new JButton[10];      </span>
-<span class="nc bnc" id="L90" title="All 2 branches missed.">      for (int i = 0; i &lt; 10; i++) {</span>
-<span class="nc" id="L91">    		 but[i] = new JButton(String.valueOf(i));</span>
+<span class="nc" id="L88">      but = new JButton[10];      </span>
+<span class="nc bnc" id="L89" title="All 2 branches missed.">      for (int i = 0; i &lt; 10; i++) {</span>
+<span class="nc" id="L90">    		 but[i] = new JButton(String.valueOf(i));</span>
       }      
-<span class="nc" id="L93">      butAdd = new JButton(&quot;+&quot;);      </span>
-<span class="nc" id="L94">      butMinus = new JButton(&quot;-&quot;);      </span>
-<span class="nc" id="L95">      butMultiply = new JButton(&quot;*&quot;);      </span>
-<span class="nc" id="L96">      butDivide = new JButton(&quot;/&quot;);      </span>
-<span class="nc" id="L97">      butEqual = new JButton(&quot;=&quot;);      </span>
-<span class="nc" id="L98">      butSquareRoot = new JButton(&quot;sqrt&quot;);      </span>
-<span class="nc" id="L99">      butSquare = new JButton(&quot;x*x&quot;);      </span>
+<span class="nc" id="L92">      butAdd = new JButton(&quot;+&quot;);      </span>
+<span class="nc" id="L93">      butMinus = new JButton(&quot;-&quot;);      </span>
+<span class="nc" id="L94">      butMultiply = new JButton(&quot;*&quot;);      </span>
+<span class="nc" id="L95">      butDivide = new JButton(&quot;/&quot;);      </span>
+<span class="nc" id="L96">      butEqual = new JButton(&quot;=&quot;);      </span>
+<span class="nc" id="L97">      butSquareRoot = new JButton(&quot;sqrt&quot;);      </span>
+<span class="nc" id="L98">      butSquare = new JButton(&quot;x*x&quot;);</span>
+<span class="nc" id="L99">      butCube = new JButton(&quot;x*x*x&quot;);</span>
 <span class="nc" id="L100">      butOneDividedBy = new JButton(&quot;1/x&quot;);      </span>
 <span class="nc" id="L101">      butCos = new JButton(&quot;Cos&quot;);      </span>
 <span class="nc" id="L102">      butSin = new JButton(&quot;Sin&quot;);      </span>
@@ -106,33 +106,33 @@ public class UI implements ActionListener {
 <span class="nc" id="L106">      butrate = new JButton(&quot;x%&quot;);      </span>
 <span class="nc" id="L107">      butabs = new JButton(&quot;abs(x)&quot;);      </span>
 <span class="nc" id="L108">      butCancel = new JButton(&quot;C&quot;);      </span>
-<span class="nc" id="L109">      butBinary = new JButton(&quot;Bin&quot;);</span>
-<span class="nc" id="L110">      butDarkMode = new JButton(&quot;Dark&quot;);</span>
+<span class="nc" id="L109">      butBinary = new JButton(&quot;Bin&quot;);      </span>
       
-<span class="nc" id="L112">      calc = new Calculator();</span>
+<span class="nc" id="L111">      calc = new Calculator();</span>
       
-<span class="nc" id="L114">   }</span>
+<span class="nc" id="L113">   }</span>
    
    public void init() {      
-<span class="nc" id="L117">      frame.setSize(450, 450);</span>
-<span class="nc" id="L118">      frame.setLocationRelativeTo(null); </span>
-<span class="nc" id="L119">      frame.setResizable(false);</span>
-<span class="nc" id="L120">      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
-<span class="nc" id="L121">      frame.setIconImage(image.getImage());</span>
+<span class="nc" id="L116">      frame.setSize(450, 450);</span>
+<span class="nc" id="L117">      frame.setLocationRelativeTo(null); </span>
+<span class="nc" id="L118">      frame.setResizable(false);</span>
+<span class="nc" id="L119">      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L120">      frame.setIconImage(image.getImage());</span>
       
-<span class="nc" id="L123">      text.setFont(textFont);</span>
-<span class="nc" id="L124">      text.setEditable(false);</span>
+<span class="nc" id="L122">      text.setFont(textFont);</span>
+<span class="nc" id="L123">      text.setEditable(false);</span>
       
-<span class="nc bnc" id="L126" title="All 2 branches missed.">      for (int i = 0; i &lt; 10; i++) {</span>
-<span class="nc" id="L127">         but[i].setFont(font);</span>
+<span class="nc bnc" id="L125" title="All 2 branches missed.">      for (int i = 0; i &lt; 10; i++) {</span>
+<span class="nc" id="L126">         but[i].setFont(font);</span>
       }      
-<span class="nc" id="L129">      butAdd.setFont(font);</span>
-<span class="nc" id="L130">      butMinus.setFont(font);</span>
-<span class="nc" id="L131">      butMultiply.setFont(font);</span>
-<span class="nc" id="L132">      butDivide.setFont(font);</span>
-<span class="nc" id="L133">      butEqual.setFont(font);</span>
-<span class="nc" id="L134">      butSquareRoot.setFont(font);</span>
-<span class="nc" id="L135">      butSquare.setFont(font);</span>
+<span class="nc" id="L128">      butAdd.setFont(font);</span>
+<span class="nc" id="L129">      butMinus.setFont(font);</span>
+<span class="nc" id="L130">      butMultiply.setFont(font);</span>
+<span class="nc" id="L131">      butDivide.setFont(font);</span>
+<span class="nc" id="L132">      butEqual.setFont(font);</span>
+<span class="nc" id="L133">      butSquareRoot.setFont(font);</span>
+<span class="nc" id="L134">      butSquare.setFont(font);</span>
+<span class="nc" id="L135">      butCube.setFont(font);</span>
 <span class="nc" id="L136">      butOneDividedBy.setFont(font);</span>
 <span class="nc" id="L137">      butCos.setFont(font);</span>
 <span class="nc" id="L138">      butSin.setFont(font);</span>
@@ -143,43 +143,43 @@ public class UI implements ActionListener {
 <span class="nc" id="L143">      butabs.setFont(font);</span>
 <span class="nc" id="L144">      butCancel.setFont(font);</span>
 <span class="nc" id="L145">      butBinary.setFont(font); </span>
-<span class="nc" id="L146">      butDarkMode.setFont(font); </span>
       
-<span class="nc" id="L148">      panel.add(Box.createHorizontalStrut(100));</span>
-<span class="nc" id="L149">      panelSub1.add(text);</span>
-<span class="nc" id="L150">      panel.add(panelSub1);</span>
+<span class="nc" id="L147">      panel.add(Box.createHorizontalStrut(100));</span>
+<span class="nc" id="L148">      panelSub1.add(text);</span>
+<span class="nc" id="L149">      panel.add(panelSub1);</span>
       
-<span class="nc" id="L152">      panelSub2.add(but[1]);</span>
-<span class="nc" id="L153">      panelSub2.add(but[2]);</span>
-<span class="nc" id="L154">      panelSub2.add(but[3]);</span>
-<span class="nc" id="L155">      panelSub2.add(Box.createHorizontalStrut(15));</span>
-<span class="nc" id="L156">      panelSub2.add(butAdd);</span>
-<span class="nc" id="L157">      panelSub2.add(butMinus);</span>
-<span class="nc" id="L158">      panel.add(panelSub2);</span>
+<span class="nc" id="L151">      panelSub2.add(but[1]);</span>
+<span class="nc" id="L152">      panelSub2.add(but[2]);</span>
+<span class="nc" id="L153">      panelSub2.add(but[3]);</span>
+<span class="nc" id="L154">      panelSub2.add(Box.createHorizontalStrut(15));</span>
+<span class="nc" id="L155">      panelSub2.add(butAdd);</span>
+<span class="nc" id="L156">      panelSub2.add(butMinus);</span>
+<span class="nc" id="L157">      panel.add(panelSub2);</span>
       
-<span class="nc" id="L160">      panelSub3.add(but[4]);</span>
-<span class="nc" id="L161">      panelSub3.add(but[5]);</span>
-<span class="nc" id="L162">      panelSub3.add(but[6]);</span>
-<span class="nc" id="L163">      panelSub3.add(Box.createHorizontalStrut(15));</span>
-<span class="nc" id="L164">      panelSub3.add(butMultiply);</span>
-<span class="nc" id="L165">      panelSub3.add(butDivide);      </span>
-<span class="nc" id="L166">      panel.add(panelSub3);</span>
+<span class="nc" id="L159">      panelSub3.add(but[4]);</span>
+<span class="nc" id="L160">      panelSub3.add(but[5]);</span>
+<span class="nc" id="L161">      panelSub3.add(but[6]);</span>
+<span class="nc" id="L162">      panelSub3.add(Box.createHorizontalStrut(15));</span>
+<span class="nc" id="L163">      panelSub3.add(butMultiply);</span>
+<span class="nc" id="L164">      panelSub3.add(butDivide);      </span>
+<span class="nc" id="L165">      panel.add(panelSub3);</span>
       
-<span class="nc" id="L168">      panelSub4.add(but[7]);</span>
-<span class="nc" id="L169">      panelSub4.add(but[8]);</span>
-<span class="nc" id="L170">      panelSub4.add(but[9]);</span>
-<span class="nc" id="L171">      panelSub4.add(Box.createHorizontalStrut(15));</span>
-<span class="nc" id="L172">      panelSub4.add(butEqual);</span>
-<span class="nc" id="L173">      panelSub4.add(butCancel);</span>
-<span class="nc" id="L174">      panel.add(panelSub4);</span>
+<span class="nc" id="L167">      panelSub4.add(but[7]);</span>
+<span class="nc" id="L168">      panelSub4.add(but[8]);</span>
+<span class="nc" id="L169">      panelSub4.add(but[9]);</span>
+<span class="nc" id="L170">      panelSub4.add(Box.createHorizontalStrut(15));</span>
+<span class="nc" id="L171">      panelSub4.add(butEqual);</span>
+<span class="nc" id="L172">      panelSub4.add(butCancel);</span>
+<span class="nc" id="L173">      panel.add(panelSub4);</span>
       
-<span class="nc" id="L176">      panelSub5.add(Box.createHorizontalStrut(92));</span>
-<span class="nc" id="L177">      panelSub5.add(but[0]);</span>
-<span class="nc" id="L178">      panelSub5.add(Box.createHorizontalStrut(210));</span>
-<span class="nc" id="L179">      panel.add(panelSub5);</span>
+<span class="nc" id="L175">      panelSub5.add(Box.createHorizontalStrut(92));</span>
+<span class="nc" id="L176">      panelSub5.add(but[0]);</span>
+<span class="nc" id="L177">      panelSub5.add(Box.createHorizontalStrut(210));</span>
+<span class="nc" id="L178">      panel.add(panelSub5);</span>
       
-<span class="nc" id="L181">      panelSub6.add(butSquare);</span>
-<span class="nc" id="L182">      panelSub6.add(butSquareRoot);</span>
+<span class="nc" id="L180">      panelSub6.add(butSquare);</span>
+<span class="nc" id="L181">      panelSub6.add(butSquareRoot);</span>
+<span class="nc" id="L182">      panelSub6.add(butCube);</span>
 <span class="nc" id="L183">      panelSub6.add(butOneDividedBy);</span>
 <span class="nc" id="L184">      panelSub6.add(butxpowerofy);</span>
 <span class="nc" id="L185">      panel.add(panelSub6);</span>
@@ -187,24 +187,24 @@ public class UI implements ActionListener {
 <span class="nc" id="L187">      panelSub7.add(butCos);</span>
 <span class="nc" id="L188">      panelSub7.add(butSin);</span>
 <span class="nc" id="L189">      panelSub7.add(butTan);</span>
-<span class="nc" id="L190">      panelSub7.add(butDarkMode);</span>
-<span class="nc" id="L191">      panel.add(panelSub7);</span>
+<span class="nc" id="L190">      panel.add(panelSub7);</span>
       
-<span class="nc" id="L193">      panelSub8.add(butlog);</span>
-<span class="nc" id="L194">      panelSub8.add(butrate);</span>
-<span class="nc" id="L195">      panelSub8.add(butabs);</span>
-<span class="nc" id="L196">      panelSub8.add(butBinary);</span>
-<span class="nc" id="L197">      panel.add(panelSub8);</span>
+<span class="nc" id="L192">      panelSub8.add(butlog);</span>
+<span class="nc" id="L193">      panelSub8.add(butrate);</span>
+<span class="nc" id="L194">      panelSub8.add(butabs);</span>
+<span class="nc" id="L195">      panelSub8.add(butBinary);</span>
+<span class="nc" id="L196">      panel.add(panelSub8);</span>
       
-<span class="nc bnc" id="L199" title="All 2 branches missed.">      for (int i = 0; i &lt; 10; i++) {</span>
-<span class="nc" id="L200">         but[i].addActionListener(this);</span>
+<span class="nc bnc" id="L198" title="All 2 branches missed.">      for (int i = 0; i &lt; 10; i++) {</span>
+<span class="nc" id="L199">         but[i].addActionListener(this);</span>
       }      
-<span class="nc" id="L202">      butAdd.addActionListener(this);</span>
-<span class="nc" id="L203">      butMinus.addActionListener(this);</span>
-<span class="nc" id="L204">      butMultiply.addActionListener(this);</span>
-<span class="nc" id="L205">      butDivide.addActionListener(this);</span>
-<span class="nc" id="L206">      butSquare.addActionListener(this);</span>
-<span class="nc" id="L207">      butSquareRoot.addActionListener(this);</span>
+<span class="nc" id="L201">      butAdd.addActionListener(this);</span>
+<span class="nc" id="L202">      butMinus.addActionListener(this);</span>
+<span class="nc" id="L203">      butMultiply.addActionListener(this);</span>
+<span class="nc" id="L204">      butDivide.addActionListener(this);</span>
+<span class="nc" id="L205">      butSquare.addActionListener(this);</span>
+<span class="nc" id="L206">      butSquareRoot.addActionListener(this);</span>
+<span class="nc" id="L207">      butCube.addActionListener(this);</span>
 <span class="nc" id="L208">      butOneDividedBy.addActionListener(this);</span>
 <span class="nc" id="L209">      butCos.addActionListener(this);</span>
 <span class="nc" id="L210">      butSin.addActionListener(this);</span>
@@ -214,138 +214,128 @@ public class UI implements ActionListener {
 <span class="nc" id="L214">      butrate.addActionListener(this);</span>
 <span class="nc" id="L215">      butabs.addActionListener(this);</span>
 <span class="nc" id="L216">      butBinary.addActionListener(this);</span>
-<span class="nc" id="L217">      butDarkMode.addActionListener(this);</span>
       
-<span class="nc" id="L219">      butEqual.addActionListener(this);</span>
-<span class="nc" id="L220">      butCancel.addActionListener(this);</span>
+<span class="nc" id="L218">      butEqual.addActionListener(this);</span>
+<span class="nc" id="L219">      butCancel.addActionListener(this);</span>
       
-<span class="nc" id="L222">      frame.add(panel);</span>
-<span class="nc" id="L223">      frame.setVisible(true);</span>
-<span class="nc" id="L224">   }</span>
+<span class="nc" id="L221">      frame.add(panel);</span>
+<span class="nc" id="L222">      frame.setVisible(true);</span>
+<span class="nc" id="L223">   }</span>
    
    @Override
    public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L228">      final Object source = e.getSource();</span>
-<span class="nc" id="L229">      Double checkNum = null;</span>
+<span class="nc" id="L227">      final Object source = e.getSource();</span>
+<span class="nc" id="L228">      Double checkNum = null;</span>
 
-<span class="nc bnc" id="L231" title="All 2 branches missed.">      for (int i = 0; i &lt; 10; i++) {</span>
-<span class="nc bnc" id="L232" title="All 2 branches missed.">         if (source == but[i]) {</span>
-<span class="nc" id="L233">            text.replaceSelection(buttonValue[i]);</span>
-<span class="nc" id="L234">            return;</span>
+<span class="nc bnc" id="L230" title="All 2 branches missed.">      for (int i = 0; i &lt; 10; i++) {</span>
+<span class="nc bnc" id="L231" title="All 2 branches missed.">         if (source == but[i]) {</span>
+<span class="nc" id="L232">            text.replaceSelection(buttonValue[i]);</span>
+<span class="nc" id="L233">            return;</span>
          }
       }
 
       try {
-<span class="nc" id="L239">         checkNum = Double.parseDouble(text.getText());</span>
-<span class="nc" id="L240">      } catch(NumberFormatException k) {</span>
+<span class="nc" id="L238">         checkNum = Double.parseDouble(text.getText());</span>
+<span class="nc" id="L239">      } catch(NumberFormatException k) {</span>
 
-<span class="nc" id="L242">      }</span>
+<span class="nc" id="L241">      }</span>
 
-<span class="nc bnc" id="L244" title="All 4 branches missed.">      if (checkNum != null || source == butCancel) {</span>
-<span class="nc bnc" id="L245" title="All 2 branches missed.">         if (source == butAdd) {</span>
-<span class="nc" id="L246">            writer(calc.calculateBi(Calculator.BiOperatorModes.add, reader()));</span>
-<span class="nc" id="L247">            text.replaceSelection(butAdd.getText());</span>
+<span class="nc bnc" id="L243" title="All 4 branches missed.">      if (checkNum != null || source == butCancel) {</span>
+<span class="nc bnc" id="L244" title="All 2 branches missed.">         if (source == butAdd) {</span>
+<span class="nc" id="L245">            writer(calc.calculateBi(Calculator.BiOperatorModes.add, reader()));</span>
+<span class="nc" id="L246">            text.replaceSelection(butAdd.getText());</span>
          }
 
-<span class="nc bnc" id="L250" title="All 2 branches missed.">         if (source == butMinus) {</span>
-<span class="nc" id="L251">            writer(calc.calculateBi(Calculator.BiOperatorModes.minus, reader()));</span>
-<span class="nc" id="L252">            text.replaceSelection(butMinus.getText());</span>
+<span class="nc bnc" id="L249" title="All 2 branches missed.">         if (source == butMinus) {</span>
+<span class="nc" id="L250">            writer(calc.calculateBi(Calculator.BiOperatorModes.minus, reader()));</span>
+<span class="nc" id="L251">            text.replaceSelection(butMinus.getText());</span>
          }
 
-<span class="nc bnc" id="L255" title="All 2 branches missed.">         if (source == butMultiply) {</span>
-<span class="nc" id="L256">            writer(calc.calculateBi(Calculator.BiOperatorModes.multiply, reader()));</span>
-<span class="nc" id="L257">            text.replaceSelection(butMultiply.getText());</span>
+<span class="nc bnc" id="L254" title="All 2 branches missed.">         if (source == butMultiply) {</span>
+<span class="nc" id="L255">            writer(calc.calculateBi(Calculator.BiOperatorModes.multiply, reader()));</span>
+<span class="nc" id="L256">            text.replaceSelection(butMultiply.getText());</span>
          }
 
-<span class="nc bnc" id="L260" title="All 2 branches missed.">         if (source == butDivide) {</span>
-<span class="nc" id="L261">            writer(calc.calculateBi(Calculator.BiOperatorModes.divide, reader()));</span>
-<span class="nc" id="L262">            text.replaceSelection(butDivide.getText());</span>
+<span class="nc bnc" id="L259" title="All 2 branches missed.">         if (source == butDivide) {</span>
+<span class="nc" id="L260">            writer(calc.calculateBi(Calculator.BiOperatorModes.divide, reader()));</span>
+<span class="nc" id="L261">            text.replaceSelection(butDivide.getText());</span>
          }
          
-<span class="nc bnc" id="L265" title="All 2 branches missed.">         if (source == butxpowerofy) {</span>
-<span class="nc" id="L266">            writer(calc.calculateBi(Calculator.BiOperatorModes.xpowerofy, reader()));</span>
+<span class="nc bnc" id="L264" title="All 2 branches missed.">         if (source == butxpowerofy) {</span>
+<span class="nc" id="L265">            writer(calc.calculateBi(Calculator.BiOperatorModes.xpowerofy, reader()));</span>
          }
 
-<span class="nc bnc" id="L269" title="All 2 branches missed.">         if (source == butSquare) {</span>
-<span class="nc" id="L270">            writer(calc.calculateMono(Calculator.MonoOperatorModes.square, reader()));</span>
+<span class="nc bnc" id="L268" title="All 2 branches missed.">         if (source == butSquare) {</span>
+<span class="nc" id="L269">            writer(calc.calculateMono(Calculator.MonoOperatorModes.square, reader()));</span>
          }
-
-<span class="nc bnc" id="L273" title="All 2 branches missed.">         if (source == butSquareRoot)</span>
-<span class="nc" id="L274">            writer(calc.calculateMono(Calculator.MonoOperatorModes.squareRoot, reader()));</span>
-
-<span class="nc bnc" id="L276" title="All 2 branches missed.">         if (source == butOneDividedBy)</span>
-<span class="nc" id="L277">            writer(calc.calculateMono(Calculator.MonoOperatorModes.oneDividedBy, reader()));</span>
-
-<span class="nc bnc" id="L279" title="All 2 branches missed.">         if (source == butCos)</span>
-<span class="nc" id="L280">            writer(calc.calculateMono(Calculator.MonoOperatorModes.cos, reader()));</span>
-
-<span class="nc bnc" id="L282" title="All 2 branches missed.">         if (source == butSin)</span>
-<span class="nc" id="L283">            writer(calc.calculateMono(Calculator.MonoOperatorModes.sin, reader()));</span>
-
-<span class="nc bnc" id="L285" title="All 2 branches missed.">         if (source == butTan)</span>
-<span class="nc" id="L286">            writer(calc.calculateMono(Calculator.MonoOperatorModes.tan, reader()));</span>
-
-<span class="nc bnc" id="L288" title="All 2 branches missed.">         if (source == butlog)</span>
-<span class="nc" id="L289">            writer(calc.calculateMono(Calculator.MonoOperatorModes.log, reader()));</span>
-
-<span class="nc bnc" id="L291" title="All 2 branches missed.">         if (source == butrate)</span>
-<span class="nc" id="L292">            writer(calc.calculateMono(Calculator.MonoOperatorModes.rate, reader()));</span>
-
-<span class="nc bnc" id="L294" title="All 2 branches missed.">         if (source == butabs)</span>
-<span class="nc" id="L295">            writer(calc.calculateMono(Calculator.MonoOperatorModes.abs, reader()));</span>
-
-<span class="nc bnc" id="L297" title="All 2 branches missed.">         if (source == butEqual)</span>
-<span class="nc" id="L298">            writer(calc.calculateEqual(reader()));</span>
-
-<span class="nc bnc" id="L300" title="All 2 branches missed.">         if (source == butCancel)</span>
-<span class="nc" id="L301">            writer(calc.reset());</span>
-
-<span class="nc bnc" id="L303" title="All 2 branches missed.">         if (source == butBinary)</span>
-<span class="nc" id="L304">            parsetoBinary();</span>
          
-<span class="nc bnc" id="L306" title="All 2 branches missed.">         if (source == butDarkMode)</span>
-<span class="nc" id="L307">             changeBGColor();</span>
+<span class="nc bnc" id="L272" title="All 2 branches missed.">         if (source == butCube) {</span>
+<span class="nc" id="L273">             writer(calc.calculateMono(Calculator.MonoOperatorModes.cube, reader()));</span>
+          }
+
+<span class="nc bnc" id="L276" title="All 2 branches missed.">         if (source == butSquareRoot)</span>
+<span class="nc" id="L277">            writer(calc.calculateMono(Calculator.MonoOperatorModes.squareRoot, reader()));</span>
+
+<span class="nc bnc" id="L279" title="All 2 branches missed.">         if (source == butOneDividedBy)</span>
+<span class="nc" id="L280">            writer(calc.calculateMono(Calculator.MonoOperatorModes.oneDividedBy, reader()));</span>
+
+<span class="nc bnc" id="L282" title="All 2 branches missed.">         if (source == butCos)</span>
+<span class="nc" id="L283">            writer(calc.calculateMono(Calculator.MonoOperatorModes.cos, reader()));</span>
+
+<span class="nc bnc" id="L285" title="All 2 branches missed.">         if (source == butSin)</span>
+<span class="nc" id="L286">            writer(calc.calculateMono(Calculator.MonoOperatorModes.sin, reader()));</span>
+
+<span class="nc bnc" id="L288" title="All 2 branches missed.">         if (source == butTan)</span>
+<span class="nc" id="L289">            writer(calc.calculateMono(Calculator.MonoOperatorModes.tan, reader()));</span>
+
+<span class="nc bnc" id="L291" title="All 2 branches missed.">         if (source == butlog)</span>
+<span class="nc" id="L292">            writer(calc.calculateMono(Calculator.MonoOperatorModes.log, reader()));</span>
+
+<span class="nc bnc" id="L294" title="All 2 branches missed.">         if (source == butrate)</span>
+<span class="nc" id="L295">            writer(calc.calculateMono(Calculator.MonoOperatorModes.rate, reader()));</span>
+
+<span class="nc bnc" id="L297" title="All 2 branches missed.">         if (source == butabs)</span>
+<span class="nc" id="L298">            writer(calc.calculateMono(Calculator.MonoOperatorModes.abs, reader()));</span>
+
+<span class="nc bnc" id="L300" title="All 2 branches missed.">         if (source == butEqual)</span>
+<span class="nc" id="L301">            writer(calc.calculateEqual(reader()));</span>
+
+<span class="nc bnc" id="L303" title="All 2 branches missed.">         if (source == butCancel)</span>
+<span class="nc" id="L304">            writer(calc.reset());</span>
+
+<span class="nc bnc" id="L306" title="All 2 branches missed.">         if (source == butBinary)</span>
+<span class="nc" id="L307">            parsetoBinary();</span>
       }
 
 <span class="nc" id="L310">      text.selectAll();</span>
 <span class="nc" id="L311">   }</span>
    
-   private void changeBGColor() {
-<span class="nc" id="L314">	   Color c1 = new Color(100, 100, 100);  </span>
-<span class="nc" id="L315">	   panel.setBackground(c1);</span>
-<span class="nc" id="L316">	   panelSub2.setBackground(c1);</span>
-<span class="nc" id="L317">	   panelSub3.setBackground(c1);</span>
-<span class="nc" id="L318">	   panelSub4.setBackground(c1);</span>
-<span class="nc" id="L319">	   panelSub5.setBackground(c1);</span>
-<span class="nc" id="L320">	   panelSub6.setBackground(c1);</span>
-<span class="nc" id="L321">	   panelSub7.setBackground(c1);</span>
-<span class="nc" id="L322">	   panelSub8.setBackground(c1);</span>
-<span class="nc" id="L323">   }</span>
-   
-   
    private void parsetoBinary() {
       try {
-<span class="nc" id="L328">         text.setText(&quot;&quot; + Long.toBinaryString(Long.parseLong(text.getText())));</span>
-<span class="nc" id="L329">      } catch (NumberFormatException ex) {</span>
-<span class="nc" id="L330">         System.err.println(&quot;Error while parse to binary.&quot; + ex.toString());</span>
-<span class="nc" id="L331">      }</span>
-<span class="nc" id="L332">   }</span>
+<span class="nc" id="L315">         text.setText(&quot;&quot; + Long.toBinaryString(Long.parseLong(text.getText())));</span>
+<span class="nc" id="L316">      } catch (NumberFormatException ex) {</span>
+<span class="nc" id="L317">         System.err.println(&quot;Error while parse to binary.&quot; + ex.toString());</span>
+<span class="nc" id="L318">      }</span>
+<span class="nc" id="L319">   }</span>
    
    public Double reader() {
       Double num;
       String str;
-<span class="nc" id="L337">      str = text.getText();</span>
-<span class="nc" id="L338">      num = Double.valueOf(str);</span>
+<span class="nc" id="L324">      str = text.getText();</span>
+<span class="nc" id="L325">      num = Double.valueOf(str);</span>
       
-<span class="nc" id="L340">      return num;</span>
+<span class="nc" id="L327">      return num;</span>
    }
    
    public void writer(final Double num) {
-<span class="nc bnc" id="L344" title="All 2 branches missed.">      if (Double.isNaN(num)) {</span>
-<span class="nc" id="L345">         text.setText(&quot;&quot;);</span>
+<span class="nc bnc" id="L331" title="All 2 branches missed.">      if (Double.isNaN(num)) {</span>
+<span class="nc" id="L332">         text.setText(&quot;&quot;);</span>
       } else {
-<span class="nc" id="L347">         text.setText(Double.toString(num));</span>
+<span class="nc" id="L334">         text.setText(Double.toString(num));</span>
       }
-<span class="nc" id="L349">   }</span>
+<span class="nc" id="L336">   }</span>
 }
+
+      
+  
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
