@@ -1,3 +1,9 @@
+[![Generate JUnit Report](https://github.com/rickieleehao/Simple-Java-Calculator/actions/workflows/test_coverage.yml/badge.svg?branch=master)](https://github.com/rickieleehao/Simple-Java-Calculator/actions/workflows/test_coverage.yml)
+[![Generate&Push Build to DockerHub](https://github.com/rickieleehao/Simple-Java-Calculator/actions/workflows/maven_build.yml/badge.svg?branch=master)](https://github.com/rickieleehao/Simple-Java-Calculator/actions/workflows/maven_build.yml)
+[![Static Code Analysis](https://github.com/rickieleehao/Simple-Java-Calculator/actions/workflows/codacy-analysis.yaml/badge.svg?branch=master)](https://github.com/rickieleehao/Simple-Java-Calculator/actions/workflows/codacy-analysis.yaml)
+
+[VIEW JUnit Test Report](https://rickieleehao.github.io/Simple-Java-Calculator/)
+
 <div align="center">
 
 # Simple Java Calculator
