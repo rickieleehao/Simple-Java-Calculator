@@ -18,6 +18,7 @@
 
 package simplejavacalculator;
 
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -95,8 +96,7 @@ public class UI implements ActionListener {
       butDivide = new JButton("/");      
       butEqual = new JButton("=");      
       butSquareRoot = new JButton("sqrt");      
-      butSquare = new JButton("x*x");
-      butCube = new JButton("x*x*x");
+      butSquare = new JButton("x*x");      
       butOneDividedBy = new JButton("1/x");      
       butCos = new JButton("Cos");      
       butSin = new JButton("Sin");      
@@ -108,7 +108,7 @@ public class UI implements ActionListener {
       butrate = new JButton("x%");      
       butabs = new JButton("abs(x)");      
       butCancel = new JButton("C");      
-      butBinary = new JButton("Bin");      
+      butBinary = new JButton("Bin");
       
       calc = new Calculator();
       
@@ -134,7 +134,6 @@ public class UI implements ActionListener {
       butEqual.setFont(font);
       butSquareRoot.setFont(font);
       butSquare.setFont(font);
-      butCube.setFont(font);
       butOneDividedBy.setFont(font);
       butCos.setFont(font);
       butSin.setFont(font);
@@ -183,7 +182,6 @@ public class UI implements ActionListener {
       
       panelSub6.add(butSquare);
       panelSub6.add(butSquareRoot);
-      panelSub6.add(butCube);
       panelSub6.add(butOneDividedBy);
       panelSub6.add(butxpowerofy);
       panel.add(panelSub6);
@@ -210,7 +208,6 @@ public class UI implements ActionListener {
       butDivide.addActionListener(this);
       butSquare.addActionListener(this);
       butSquareRoot.addActionListener(this);
-      butCube.addActionListener(this);
       butOneDividedBy.addActionListener(this);
       butCos.addActionListener(this);
       butSin.addActionListener(this);
@@ -222,7 +219,6 @@ public class UI implements ActionListener {
       butrate.addActionListener(this);
       butabs.addActionListener(this);
       butBinary.addActionListener(this);
-      
       butEqual.addActionListener(this);
       butCancel.addActionListener(this);
       
@@ -276,10 +272,6 @@ public class UI implements ActionListener {
          if (source == butSquare) {
             writer(calc.calculateMono(Calculator.MonoOperatorModes.square, reader()));
          }
-         
-         if (source == butCube) {
-             writer(calc.calculateMono(Calculator.MonoOperatorModes.cube, reader()));
-          }
 
          if (source == butSquareRoot)
             writer(calc.calculateMono(Calculator.MonoOperatorModes.squareRoot, reader()));
@@ -323,7 +315,7 @@ public class UI implements ActionListener {
 
       text.selectAll();
    }
-   
+  
    private void parsetoBinary() {
       try {
          text.setText("" + Long.toBinaryString(Long.parseLong(text.getText())));
@@ -349,6 +341,3 @@ public class UI implements ActionListener {
       }
    }
 }
-
-      
-  
