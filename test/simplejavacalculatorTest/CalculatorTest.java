@@ -92,6 +92,12 @@ public class CalculatorTest {
 	}
 	
 	@Test
+	void CalculateMonoInverseTanTest() {
+		Calculator calculator = new Calculator();
+		Assertions.assertEquals(45.0, calculator.calculateMono(Calculator.MonoOperatorModes.inverseTan, 1.0), 0.0000000001);
+  }
+  
+  @Test
 	void CalculateMonoTanTest() {
 		Calculator calculator = new Calculator();
 		Assertions.assertEquals(1.0, calculator.calculateMono(Calculator.MonoOperatorModes.tan, Math.toDegrees(java.lang.Math.PI) / 4), 0.0000000001);
