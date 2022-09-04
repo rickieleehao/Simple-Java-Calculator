@@ -35,5 +35,13 @@ jobs:
         dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+        
+    - name: Create Temp Folder for Artifact
+      run:
+        mkdir staging && cp target/*.jar staging
 
-
+    - name: Extract Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: .jar file for download
+        path: staging
